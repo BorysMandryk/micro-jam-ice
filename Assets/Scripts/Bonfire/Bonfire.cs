@@ -9,19 +9,24 @@ namespace Bonfire
         [SerializeField] private float _capacity = 100f;
         [SerializeField] private float _heatingRate = 10f;
 
+        private PlayerTemperature _playerTemperature;
+        private PlayerFreezer _playerFreezer;
+
         private bool _isActivated = false;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (_isActivated)
+            if (!_isActivated)
             {
-                return;
+                _isActivated = true;
+                StartCoroutine(Burn());
             }
 
             if (collision.CompareTag("Player"))
             {
-                _isActivated = true;
-                StartCoroutine(Burn());
+                _playerTemperature = collision.GetComponent<PlayerTemperature>();
+                _playerFreezer = collision.GetComponent<PlayerFreezer>();
+                _playerFreezer?.StopFreezing();
             }
         }
 
@@ -29,8 +34,17 @@ namespace Bonfire
         {
             if (collision.CompareTag("Player"))
             {
-                var playerTemperature = collision.GetComponent<PlayerTemperature>();
-                playerTemperature.Temperature += _heatingRate * Time.deltaTime;
+                _playerTemperature.Temperature += _heatingRate * Time.deltaTime;    
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                _playerFreezer?.StartFreezing();
+                _playerTemperature = null;
+                _playerFreezer = null;
             }
         }
 
@@ -42,7 +56,9 @@ namespace Bonfire
                 yield return null;
             }
 
-            enabled = false;
+            _playerFreezer?.StartFreezing();
+            //enabled = false;
+            gameObject.SetActive(false);
         }
     }
 }
