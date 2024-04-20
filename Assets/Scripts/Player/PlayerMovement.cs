@@ -5,7 +5,18 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [field: SerializeField] public float MinSpeed { get; private set; } = 0f;
+        [field: SerializeField] public float MaxSpeed { get; private set; } = 5f;
+
         [SerializeField] private float _speed = 5f;
+        public float Speed
+        {
+            get => _speed;
+            set {
+                _speed = Mathf.Clamp(value, 0f, 5f);
+                Move();
+            }
+        }
 
         private Rigidbody2D _rigidbody;
         private PlayerInputActions _playerInputActions;
@@ -15,6 +26,7 @@ namespace Player
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+
             _playerInputActions = new PlayerInputActions();
 
             _playerInputActions.Player.Move.performed += Move_performed;
@@ -31,27 +43,21 @@ namespace Player
             _playerInputActions.Player.Disable();
         }
 
-        public void ChangeSpeed(float multiplier)
-        {
-            _speed += multiplier;
-            Move(_direction);
-        }
-
         private void Move_performed(InputAction.CallbackContext ctx)
         {
             _direction = ctx.ReadValue<Vector2>();
-            Move(_direction);
+            Move();
         }
 
         private void Move_canceled(InputAction.CallbackContext ctx)
         {
             _direction = Vector2.zero;
-            Move(_direction);
+            Move();
         }
 
-        private void Move(Vector2 direction)
+        private void Move()
         {
-            _rigidbody.velocity = direction * _speed;
+            _rigidbody.velocity = _direction * _speed;
         }
     }
 }

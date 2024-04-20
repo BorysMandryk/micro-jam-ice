@@ -438,6 +438,8 @@ GameObject:
   - component: {fileID: 738449408}
   - component: {fileID: 738449409}
   - component: {fileID: 738449407}
+  - component: {fileID: 738449411}
+  - component: {fileID: 738449410}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -473,6 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b9f6fc525319f46bf7e4d0b49e35cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MinSpeed>k__BackingField: 0
+  <MaxSpeed>k__BackingField: 5
   _speed: 5
 --- !u!50 &738449408
 Rigidbody2D:
@@ -536,6 +540,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &738449410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738449404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e18a0973d7f06d43b3711107632ccf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &738449411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738449404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c75cd66f96dec14486abac806f571fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MinTemperature>k__BackingField: 0
+  <MaxTemperature>k__BackingField: 100
+  _temperature: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
