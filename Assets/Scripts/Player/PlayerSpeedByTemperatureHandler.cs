@@ -18,7 +18,7 @@ namespace Player
         private void Start()
         {
             _speedPerTemperature = _playerMovement.MaxSpeed / _playerTemperature.MaxTemperature;
-            _playerMovement.Speed = _playerTemperature.Temperature * _speedPerTemperature;
+            SetSpeedByTemperature(_playerTemperature.Temperature);
             _playerTemperature.OnChangeTemperature += SetSpeedByTemperature;
         }
 
