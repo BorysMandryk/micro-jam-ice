@@ -14,7 +14,7 @@ namespace Player
             get => _temperature;
             set
             {
-                _temperature = value;
+                _temperature = Mathf.Clamp(value, MinTemperature, MaxTemperature);
                 OnChangeTemperature?.Invoke(_temperature);
             }
         }

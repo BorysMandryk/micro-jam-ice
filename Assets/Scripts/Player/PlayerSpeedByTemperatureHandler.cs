@@ -6,20 +6,25 @@ namespace Player
     {
         private PlayerMovement _playerMovement;
         private PlayerTemperature _playerTemperature;
-        
+
+        private float _speedPerTemperature;
+
         private void Awake()
         {
             _playerMovement = GetComponent<PlayerMovement>();
-            
             _playerTemperature = GetComponent<PlayerTemperature>();
+        }
+
+        private void Start()
+        {
+            _speedPerTemperature = _playerMovement.MaxSpeed / _playerTemperature.MaxTemperature;
+            _playerMovement.Speed = _playerTemperature.Temperature * _speedPerTemperature;
             _playerTemperature.OnChangeTemperature += SetSpeedByTemperature;
         }
 
         private void SetSpeedByTemperature(float temperature)
         {
-            var speedPerTemperature = _playerMovement.MaxSpeed / _playerTemperature.MaxTemperature;
-            _playerMovement.Speed = temperature * speedPerTemperature;
-            Debug.Log(_playerMovement.Speed);
+            _playerMovement.Speed = temperature * _speedPerTemperature;
         }
     }
 }

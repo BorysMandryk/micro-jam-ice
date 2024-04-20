@@ -13,7 +13,7 @@ namespace Player
         {
             get => _speed;
             set {
-                _speed = Mathf.Clamp(value, 0f, 5f);
+                _speed = Mathf.Clamp(value, MinSpeed, MaxSpeed);
                 Move();
             }
         }
