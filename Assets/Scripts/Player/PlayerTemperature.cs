@@ -14,11 +14,15 @@ namespace Player
             get => _temperature;
             set
             {
-                _temperature = Mathf.Clamp(value, MinTemperature, MaxTemperature);
-                OnChangeTemperature?.Invoke(_temperature);
+                if (value < MinTemperature  || value > MaxTemperature)
+                {
+                    return;
+                }
+                _temperature = value;
+                OnChangeTemperature?.Invoke();
             }
         }
 
-        public event Action<float> OnChangeTemperature;
+        public event Action OnChangeTemperature;
     }
 }

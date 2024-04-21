@@ -13,12 +13,17 @@ namespace Player
         {
             get => _mass; set
             {
-                _mass = Mathf.Clamp(value, MinMass, MaxMass);
-                OnChangeMass?.Invoke(_mass);
+                if (value < MinMass || value > MaxMass)
+                {
+                    return;
+                }
+
+                _mass = value;
+                OnChangeMass?.Invoke();
             }
         }
 
-        public event Action<int> OnChangeMass;
+        public event Action OnChangeMass;
 
         // TODO: remove
         private void Update()
