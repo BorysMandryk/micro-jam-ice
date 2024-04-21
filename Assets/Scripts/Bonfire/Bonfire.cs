@@ -11,6 +11,7 @@ namespace Bonfire
 
         private PlayerTemperature _playerTemperature;
         private PlayerFreezer _playerFreezer;
+        private Animator _animator;
 
         private bool _isActivated = false;
 
@@ -24,9 +25,13 @@ namespace Bonfire
 
             if (collision.CompareTag("Player"))
             {
+                _animator = GetComponent<Animator>();
+                _animator.enabled = true;
+
                 _playerTemperature = collision.GetComponent<PlayerTemperature>();
                 _playerFreezer = collision.GetComponent<PlayerFreezer>();
                 _playerFreezer?.StopFreezing();
+                Debug.Log("Bonfire entered");
             }
         }
 
@@ -34,7 +39,7 @@ namespace Bonfire
         {
             if (collision.CompareTag("Player"))
             {
-                _playerTemperature.Temperature += _heatingRate * Time.deltaTime;    
+                _playerTemperature.Temperature += _heatingRate * Time.deltaTime;
             }
         }
 
@@ -42,6 +47,7 @@ namespace Bonfire
         {
             if (collision.CompareTag("Player"))
             {
+                Debug.Log("Bonfire exited");
                 _playerFreezer?.StartFreezing();
                 _playerTemperature = null;
                 _playerFreezer = null;
@@ -50,15 +56,16 @@ namespace Bonfire
 
         private IEnumerator Burn()
         {
-            while(_capacity > 0)
+            while (_capacity > 0)
             {
                 _capacity -= _heatingRate * Time.deltaTime;
                 yield return null;
             }
 
             _playerFreezer?.StartFreezing();
-            //enabled = false;
-            gameObject.SetActive(false);
+
+            _animator.SetTrigger("Estinguish");
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 }
