@@ -19,7 +19,7 @@ namespace Items
             if (collision.CompareTag("Player"))
             {
                 var playerInventory = collision.GetComponent<PlayerInventory>();
-                playerInventory.Mass++;
+                playerInventory.Mass += _mass;
                 _pickedUp = true;
             }
         }
