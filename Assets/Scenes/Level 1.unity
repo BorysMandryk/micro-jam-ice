@@ -220,6 +220,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5353692998054190967, guid: 436c834a1892ab94693167996b73d8aa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353692998054190967, guid: 436c834a1892ab94693167996b73d8aa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7982839083666116790, guid: 436c834a1892ab94693167996b73d8aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.4642091
