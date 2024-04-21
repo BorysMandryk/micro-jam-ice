@@ -30664,6 +30664,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4910726821782442628, guid: 8891b21a6b69c054c9af877ec1054086, type: 3}
+      propertyPath: <MaxSpeed>k__BackingField
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271352149046964428, guid: 8891b21a6b69c054c9af877ec1054086, type: 3}
+      propertyPath: _freezeRate
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
