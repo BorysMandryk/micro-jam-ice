@@ -10,8 +10,7 @@ namespace Player
         private PlayerTemperature _playerTemperature;
         private PlayerInventory _playerInventory;
 
-        private void Awake()
-        {
+        private void Awake()        {
             _playerMovement = GetComponent<PlayerMovement>();
             _playerTemperature = GetComponent<PlayerTemperature>();
             _playerInventory = GetComponent<PlayerInventory>();
