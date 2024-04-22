@@ -3,11 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int _menuSceneIndex = 0;
-    [SerializeField] private int _firstLevelSceneIndex = 1;
-    [SerializeField] private int _gameOverSceneIndex = 4;
-    [SerializeField] private int _endSceneIndex = 5;
-    [SerializeField] private int _currentSceneIndex = 0;
+    private int _menuSceneIndex = 0;
+    private int _firstLevelSceneIndex = 1;
+    private int _winSceneIndex = 3;
+    private int _gameOverSceneIndex = 4;
+    private int _currentSceneIndex = 0;
 
     public static GameManager Instance { get; private set; }
 
@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadFirstLevel()
     {
-        SceneManager.LoadScene(_firstLevelSceneIndex);
+        _currentSceneIndex = _firstLevelSceneIndex;
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
     public void LoadNextScene()
@@ -35,24 +36,26 @@ public class GameManager : MonoBehaviour
         //{
         //    Debug.LogError($"_currentSceneIndex {_currentSceneIndex} is out of bounds");
         //}
-
-        SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(_currentSceneIndex++).buildIndex);
+        _currentSceneIndex++;
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
     public void LoadMenuScene()
     {
-        SceneManager.LoadScene(_menuSceneIndex);
+        _currentSceneIndex = _menuSceneIndex;
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
     public void LoadGameOverScene()
     {
-        Debug.Log("Load game over");
-        SceneManager.LoadScene(_gameOverSceneIndex);
+        _currentSceneIndex = _gameOverSceneIndex;
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
-    public void LoadEndScene()
+    public void LoadWinScene()
     {
-        SceneManager.LoadScene(_endSceneIndex);
+        _currentSceneIndex = _winSceneIndex;
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
     public void QuitApplication()

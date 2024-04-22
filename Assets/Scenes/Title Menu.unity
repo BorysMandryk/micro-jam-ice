@@ -520,6 +520,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 218748964}
     m_Modifications:
+    - target: {fileID: 1535895810768507365, guid: 7eacb85fddd289641b948b13121189f8, type: 3}
+      propertyPath: m_text
+      value: 'Don''t freeze '
+      objectReference: {fileID: 0}
     - target: {fileID: 5493957148074864183, guid: 7eacb85fddd289641b948b13121189f8, type: 3}
       propertyPath: m_Name
       value: Menu

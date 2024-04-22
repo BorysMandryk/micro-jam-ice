@@ -163,14 +163,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4388176793144643574, guid: 6a58e65f8a0ce9747b5293c84f4b2880, type: 3}
-      propertyPath: _temperature
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4750262279957687364, guid: 6a58e65f8a0ce9747b5293c84f4b2880, type: 3}
-      propertyPath: _freezeRate
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8749211312897567182, guid: 6a58e65f8a0ce9747b5293c84f4b2880, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
