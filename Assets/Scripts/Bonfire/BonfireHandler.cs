@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Bonfire
 {
-    public class Bonfire : MonoBehaviour
+    public class BonfireHandler : MonoBehaviour
     {
         [SerializeField] private float _capacity = 100f;
         [SerializeField] private float _heatingRate = 10f;

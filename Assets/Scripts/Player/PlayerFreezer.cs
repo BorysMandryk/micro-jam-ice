@@ -38,12 +38,14 @@ namespace Player
 
         private IEnumerator Freeze()
         {
-            while (true)
+            while (_playerTemperature.Temperature > 0)
             {
                 _playerTemperature.Temperature -= _freezeRate * Time.deltaTime;
                 Debug.Log("Freeze: " + _playerTemperature.Temperature); // TODO: remove
+
                 yield return null;
             }
+            GameManager.Instance.LoadGameOverScene();
         }
     }
 }

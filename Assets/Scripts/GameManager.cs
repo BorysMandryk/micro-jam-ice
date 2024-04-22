@@ -31,10 +31,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene()
     {
-        if (_currentSceneIndex < 0 || _currentSceneIndex >= SceneManager.sceneCount)
-        {
-            Debug.LogError($"_currentSceneIndex {_currentSceneIndex} is out of bounds");
-        }
+        //if (_currentSceneIndex < 0 || _currentSceneIndex >= SceneManager.sceneCount)
+        //{
+        //    Debug.LogError($"_currentSceneIndex {_currentSceneIndex} is out of bounds");
+        //}
 
         SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(_currentSceneIndex++).buildIndex);
     }
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGameOverScene()
     {
+        Debug.Log("Load game over");
         SceneManager.LoadScene(_gameOverSceneIndex);
     }
 

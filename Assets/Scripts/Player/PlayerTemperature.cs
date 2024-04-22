@@ -14,7 +14,7 @@ namespace Player
             get => _temperature;
             set
             {
-                if (value < MinTemperature  || value > MaxTemperature)
+                if (value > MaxTemperature)
                 {
                     return;
                 }
